@@ -9,9 +9,17 @@
     
         xhr.onload = await function() {
             if (xhr.status === 200 || xhr.status === 201) {
-                let result = xhr.response;
-                result = JSON.parse(result);
-                return result.miner.availableBalance;
+                let parsing_data = xhr.response;
+                parsing_data = JSON.parse(parsing_data);
+                /*
+                    parsing_data.balance = 계정잔액(FIL)
+                    parsing_data.miner.availableBalance = 사용 가능 잔액(FIL)
+                    parsing_data.miner.sectorPledgeBalance = Initial pledge(FIL)
+
+                */
+                let result = [ parsing_data.balance, parsing_data.miner.availableBalance, parsing_data.miner.sectorPledgeBalance]
+
+                return result;
     
             }   else
                     console.log("check filfox response");
