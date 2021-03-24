@@ -1,0 +1,35 @@
+
+<script>
+
+    var test1 = undefined;
+    
+    async function send_() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://filfox.info/api/v1/address/f0127595'); //나중에 입력 받아서 모든 머신에 대해서 값을 가져와야함.
+    
+        xhr.onload = await function() {
+            if (xhr.status === 200 || xhr.status === 201) {
+                let result = xhr.response;
+                result = JSON.parse(result);
+                return result.miner.availableBalance;
+    
+            }   else
+                    console.log("check filfox response");
+            };
+        
+        // xhr.setRequestHeader('Content-Type', 'application/json');
+        await xhr.send();
+    }
+    
+    (async () => {
+        let test2 = await send_()
+        console.log(test2)
+    })();
+    
+    
+    // var param = send();
+    // console.log(param['availableBalance']);
+    // console.log(param);
+    
+    
+    </script>
