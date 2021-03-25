@@ -11,5 +11,3 @@ function send() {
     xhr.setRequestHeader('Content-Type', 'application/json'); 
     xhr.send(data);
 };send();
-
-//git hub commit test

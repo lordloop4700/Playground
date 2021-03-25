@@ -4,7 +4,7 @@
 
     </head>
     <script>
-        //DB로 부터 받는 여러 유저 값을 불러와 계산후 ejs에 뿌려야함. 1
+        //DB로 부터 받는 여러 유저 값을 불러와 계산후 ejs에 뿌려야함.
         let numberfloat = 0.000000000000000001;
 
         function numberWithCommas(x) {
@@ -19,7 +19,7 @@
                     let parsing_data = xhr.response;
                     parsing_data = JSON.parse(parsing_data);
                     /*
-
+                        기획 디자이너로 부터 front정보 받고, 프로퍼티 정리하기.
                         parsing_data.balance = 계정잔액(FIL)
                         parsing_data.miner.availableBalance = 사용 가능 잔액(FIL)
                         parsing_data.miner.sectorPledgeBalance = Initial pledge(FIL)
@@ -32,7 +32,6 @@
                     console.log("check filfox response");
             }
             await xhr.send();
-            //test1
         }
 
         (async () => {
