@@ -34,6 +34,23 @@
             await xhr.send();
         }
 
+        async function send_bit() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://api.upbit.com/v1/ticker?markets=KRW-BTC');
+            
+            xhr.onload = await function() {
+                if (xhr.status === 200 || xhr.status === 201) {        
+                    let parsing_data = xhr.response;
+                    parsing_data = JSON.parse(parsing_data);
+
+                    document.getElementById('bit').innerHTML = "<h3>" + numberWithCommas(parsing_data[0].trade_price) + "원</h3>"; //fil bitcoin 계산식 
+                }   
+                else
+                    console.log("check upbit response");
+            }
+            await xhr.send();
+        }
+
         (async () => {
             await send_()
         })();
