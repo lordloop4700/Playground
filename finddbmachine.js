@@ -1,5 +1,18 @@
 //이 nodejs는 특정 사용자를 입력받아서 그 사용자의 모든 머신에 대한 values값을 준다.(비율값)
 
+/*
+    연산 방법
+    - 파일코인을 비트코인 가격으로 계산 -
+    파일코인 1개가격(원) / 비트코인 1개가격(원)
+
+    - 사용자 개인이 가지고 있는 파일코인 개수 -
+    1번 머신이 가진 코인 / user1의 지분
+    84번 머신이 가진 코인 / user1의 지분
+    
+    위 처럼 생기는 모든 식의 총합
+
+*/
+
 const model = require('../models');
 
 const DBconnection = async () => { //filecoin db랑 연결
@@ -18,7 +31,7 @@ const FinduserId = async () => {
     return user.id;
 }
 
-const HaveMachine = async (userid_p) => {
+const UserHaveMachine = async (userid_p) => {
     try{
         
         const data = await model.MachineGroup.findAll({
@@ -27,19 +40,24 @@ const HaveMachine = async (userid_p) => {
         });
 
         console.log(data[1].value);
+        return data;
         
     }catch(err){
         console.log(err);
     }
 }
 
-
-
 ( async () => {
     await DBconnection();
     const a = await FinduserId();
-    await HaveMachine(a);
+    let test = await UserHaveMachine(a);
 } )()
+
+module.exports = {
+    DBconnection,
+    FinduserId,
+    UserHaveMachine
+}
 
 
 
