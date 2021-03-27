@@ -1,12 +1,22 @@
+<<<<<<< HEAD
 <html>
     <body>
         title = title;
     </body>
 </html>
 
+=======
+<!DOCTYPE html>
+<html>
+    <head>
+>>>>>>> c3f7d9ee2578612549f964800ddec1740522cb46
 
-<script>
+    </head>
+    <script>
+        //DB로 부터 받는 여러 유저 값을 불러와 계산후 ejs에 뿌려야함.
+        let numberfloat = 0.000000000000000001;
 
+<<<<<<< HEAD
     var test1 = undefined;
     
     async function send_() {
@@ -28,22 +38,41 @@
                 var balance = "<%= balance %>"
     
             }   else
+=======
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+        async function send_() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://filfox.info/api/v1/address/f0127595'); //나중에 입력 받아서 모든 머신에 대해서 값을 가져와야함.
+            
+            xhr.onload = await function() {
+                if (xhr.status === 200 || xhr.status === 201) {        
+                    let parsing_data = xhr.response;
+                    parsing_data = JSON.parse(parsing_data);
+                    /*
+                        기획 디자이너로 부터 front정보 받고, 프로퍼티 정리하기.
+                        parsing_data.balance = 계정잔액(FIL)
+                        parsing_data.miner.availableBalance = 사용 가능 잔액(FIL)
+                        parsing_data.miner.sectorPledgeBalance = Initial pledge(FIL)
+    
+                    */
+                    document.getElementById('bal_p').innerHTML = "<h3>" + numberWithCommas((parsing_data.balance*numberfloat).toFixed(2)) + "</h3>"; 
+                    document.getElementById('avi_p').innerHTML = "<h3>" + numberWithCommas((parsing_data.miner.availableBalance*numberfloat).toFixed(2)) + "</h3>"; //유저의 경우 db로 부터 value값을 가지고 나서 
+                }   
+                else
+>>>>>>> c3f7d9ee2578612549f964800ddec1740522cb46
                     console.log("check filfox response");
-            };
-        
-        // xhr.setRequestHeader('Content-Type', 'application/json');
-        await xhr.send();
-    }
-    
-    (async () => {
-        let test2 = await send_()
-        console.log(test2)
-    })();
-    
-    
-    // var param = send();
-    // console.log(param['availableBalance']);
-    // console.log(param);
-    
-    
+            }
+            await xhr.send();
+        }
+
+        (async () => {
+            await send_()
+        })();
     </script>
+    <body>
+        <td class="td1"><div id="bal_p"></div></td>
+        <td class="td1"><div id="avi_p"></div></td>
+    </body>
+</html>
