@@ -25,7 +25,7 @@ const DBconnection = async () => { //filecoin db랑 연결
 
 const FinduserId = async () => {
     const user = await model.User.findOne({
-        where: {uId: "test1"} //나중에 아이디를 입력받아서 변수로 집어 넣도록 변경
+        where: {uId: "test2"} //나중에 아이디를 입력받아서 변수로 집어 넣도록 변경
     })
 
     return user.id;
@@ -39,8 +39,18 @@ const UserHaveMachine = async (userid_p) => {
             attibutes: [ "value" , "machineId"] //해당 유저가 각 머신에 얼마의 비율을 가지고 있는지
         });
 
+        //******************값을 가져와서 front에 보여줘야하는 모든 함수는 이곳에 정의 할까? 예를 들면 admin이 특정 유저에 대해서, 그 유저가 각 머신에 대해서 얼마의 지분을 가지고 있는지 조차도... */
+
+        /*
+        let count = data.length;
+        let machine_data = {};
+        for(i = 0; i < count; i++){
+            
+        }
+        */
+
         console.log(data[1].value);
-        return data;
+        return data[0].value;
         
     }catch(err){
         console.log(err);
@@ -51,6 +61,7 @@ const UserHaveMachine = async (userid_p) => {
     await DBconnection();
     const a = await FinduserId();
     let test = await UserHaveMachine(a);
+    console.log(test);
 } )()
 
 module.exports = {
