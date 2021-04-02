@@ -62,6 +62,25 @@
             await xhr.send();
         }
 
+        async function coinMarketApi() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://api.coingecko.com/api/v3/simple/price?ids=filecoin&vs_currencies=krw');
+            
+            xhr.onload = await function() {
+                if (xhr.status === 200 || xhr.status === 201) {        
+                    let parsing_data = xhr.response;
+                    parsing_data = JSON.parse(parsing_data);
+                    // console.log(parsing_data)
+                    // console.log(parsing_data.filecoin.krw)
+
+                    document.getElementById('fil').innerHTML = "<h3>" + numberWithCommas(parsing_data.filecoin.krw) + "원</h3>"; //fil bitcoin 계산식 
+                }   
+                else
+                    console.log("check coinmarket response");
+            }
+            await xhr.send();
+        }
+
         (async () => {
             await send_()
         })();
