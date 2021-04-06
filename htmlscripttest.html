@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+            const testFunc = () => {
+                let check = 0
+                for(i = 0; i < 100; i++){
+                    check += 2
+                }
+                // $('#tt').html(check)
+                document.getElementById("tt").innerHTML = check
+            }
+        </script>
+
+        <script src="event.js"></script>
+    </head>
+    <body>
+        <h1>use script func</h1>
+        <h2><div id = "tt"></div><script>testFunc()</script></h2>
+        <h3 id="ss"></h3>
+    </body>
+</html>
