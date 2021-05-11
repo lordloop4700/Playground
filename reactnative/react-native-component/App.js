@@ -14,6 +14,7 @@ export default function App() {
       <TouchableOpacity>
         <Text onPress={() => alert("check")}>show</Text>
       </TouchableOpacity>
+      <EventButton />
     </View>
   );
 }
