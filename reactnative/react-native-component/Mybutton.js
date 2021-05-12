@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, Text } from 'react-native';
 
-const MyButton = () =>{
+const Mybutton = () =>{
     return(
         <Pressable accessibilityRole="button">
             <Text style={{ fontSize: 20 }}>My button 2</Text>
@@ -9,4 +9,6 @@ const MyButton = () =>{
     );
 };
 
-export default MyButton;
+Mybutton.default
+
+export default Mybutton;
