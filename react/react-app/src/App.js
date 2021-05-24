@@ -5,6 +5,7 @@ import ReadContent from "./ReadContent";
 import Subject from "./Subject";
 import Control from "./Control"
 import CreateContent from "./CreateContent"
+import UpdateContent from "./UpdateContent"
 
 
 
@@ -25,8 +26,7 @@ class App extends Component{
     }
   }
 
-  render(){
-    console.log("test")
+  getContent(){
     var _title, _desc, _article = null;
     if(this.state.mode === "Welcome"){
       _title = this.state.welcome.title;
@@ -60,7 +60,30 @@ class App extends Component{
           contents:_contents
         })
       }.bind(this)}></CreateContent>
+    }else if(this.state.mode === 'update'){
+      _article = <UpdateContent onSubmit={function(_title, _desc){
+        this.max_content_id = this.max_content_id+1;
+        // this.state.contents.push({id:this.max_content_id, title:_title, desc:_desc})
+        // this.setState({
+        //   contents: this.state.contents
+        // })
+        var _contents = this.state.contents.concat(
+          {
+              contents: this.state.contents
+          }
+        )
+
+        this.setState({
+          contents:_contents
+        })
+      }.bind(this)}></UpdateContent>
     }
+    return _article;
+  }
+
+  render(){
+    console.log("test")
+    
     console.log('reader', this);
     return(
       <div className="App">
@@ -85,7 +108,7 @@ class App extends Component{
             mode:_mode
           })
         }.bind(this)}></Control>
-        {_article}
+        {this.getContent()}
       </div>
     )
   }
