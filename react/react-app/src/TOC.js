@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css'
 
 class TOC extends Component{
-  shouldComponentUpdate(newProps, newState){
+  shouldComponentUpdate(newProps, newState){ //
     if(this.props.data === newProps.data){
       return false;
     }else{
