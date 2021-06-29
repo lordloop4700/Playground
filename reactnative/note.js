@@ -13,3 +13,9 @@ npm install @react-navigation/stack @react-navigation/bottom-tabs
 
 //화면 다른곳을 눌렀을 때 키보드 포커스가 사라지는 코드
 page333
+
+//아이폰 노치 길이 확인
+page347
+
+//메인페이지 연결
+page382
