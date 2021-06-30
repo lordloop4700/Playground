@@ -19,3 +19,6 @@ page347
 
 //메인페이지 연결
 page382
+
+//설치 패키지 정리
+npm install styled-components
