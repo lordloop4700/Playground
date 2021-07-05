@@ -1,0 +1,6 @@
+reactnative 진행하면서, typescript와 react-native-nmap(naver, map) 관련 패키지를 다운 받으면 ios 시뮬레이터가 ㄹ정삭 장동을 하지 않음. 
+일단은 사람들은 이 오류를 버전 오류로 보고 있는데, 관련한 동작을 진행했으나, 증상이 그대로임.
+
+[관련 오류 내용]
+Failed to build iOS project. We ran "xcodebuild" command but it exited with error code 65. To debug build logs further, consider building your app with Xcode.app, by opening Sample.xcworkspace.
+Command line invocation:

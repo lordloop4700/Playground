@@ -22,3 +22,5 @@ page382
 
 //설치 패키지 정리
 npm install styled-components
+
+npm install expo-app-loading
