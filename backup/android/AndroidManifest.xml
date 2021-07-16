@@ -1,0 +1,15 @@
+<manifest>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>    
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
+    <application>
+        <!-- <meta-data android:name="com.naver.maps.map.gd6rg6cn8o"
+        android:value="gd6rg6cn8o" /> -->
+        <!-- <meta-data 
+            android:name="com.google.android.geo.AIzaSyCtuOJg8GakWdL7sR5LQ5jFstWkWKICd3k" 
+            android:value="AIzaSyCtuOJg8GakWdL7sR5LQ5jFstWkWKICd3k"
+        />  -->
+        <!-- You will also only need to add this uses-libray tag --> 
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+    </application>
+</manifest>
